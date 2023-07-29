@@ -17,8 +17,8 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<NorthwindContext>(options => options.UseSqlServer(builder.Configuration["DefaultConnection"]));
 builder.Services.AddScoped<CustomerRepository>();
-
 builder.Services.AddScoped<Customer>();
+builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
@@ -33,6 +33,9 @@ else
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
+
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();

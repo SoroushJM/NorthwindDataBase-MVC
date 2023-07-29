@@ -17,5 +17,10 @@ namespace NorthwindDataBase_MVC.Models
         {
             return _context.Customers;
         }
+
+        public Customer GetCustomer(int id) 
+        {
+            return _context.Customers.SingleOrDefault(c => c.CustomerId == id);
+        }
     }
 }
