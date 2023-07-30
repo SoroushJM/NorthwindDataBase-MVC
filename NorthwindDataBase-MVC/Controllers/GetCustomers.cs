@@ -29,9 +29,9 @@ namespace NorthwindDataBase_MVC.Controllers
             {
                 return NotFound();
             }
-            if(!json  && customerWithId is null)
+            if(!json)
             {
-                return BadRequest();
+                return View(_customerRepository.GetCustomer(id));
             }
             return NotFound();
         }
