@@ -14,3 +14,5 @@ namespace NorthwindDataBase_MVC.Services
         public string? ContactName { get; set; }
     }
 }
+
+
