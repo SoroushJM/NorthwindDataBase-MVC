@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using NorthwindDataBase_MVC.Data;
 using NorthwindDataBase_MVC.Models;
+using NorthwindDataBase_MVC.Models.Entity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +19,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<NorthwindContext>(options => options.UseSqlServer(builder.Configuration["DefaultConnection"]));
 builder.Services.AddScoped<CustomerRepository>();
 builder.Services.AddScoped<Customer>();
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();

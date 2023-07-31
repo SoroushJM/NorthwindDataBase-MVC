@@ -1,8 +1,33 @@
-﻿@model NorthwindDataBase_MVC.Models.CustomerRepository
+﻿@model CustomerRepository
 
 @{
     ViewData["Title"] = "View";
 }
+
+@*<script>
+    function sendGetRequest() {
+        var url = "https://localhost:7074/Customers/GetCustomerById?"
+        var inputFieldValue = document.getElementById('customerIdInput').value;
+
+        // Encode the input value to handle special characters in the URL
+        var encodedInputValue = encodeURIComponent(inputFieldValue);
+
+        // Append the customer ID and its value as query parameters to the URL
+        var urlWithQueryParams = url + customerId + '&customerValue=' + encodedInputValue;
+
+    }
+
+</script>
+
+<h3>Get customer By id</h3>
+
+<button id="submitButton" onclick="sendGetRequest()">Submit</button>
+
+<label class="input-group mb-3">
+    customer id :
+    <input type="number"/>
+</label>
+*@
 
 <h1>Customers</h1>
 
@@ -10,7 +35,7 @@
     <thead>
         <tr>
             <th scope="col">CustomerId</th>
-            <th scope="col">CustomerName</th>
+            <th scope="col">company name</th>
             <th scope="col">ContactName</th>
             <th scope="col">Address</th>
             <th scope="col">City</th>

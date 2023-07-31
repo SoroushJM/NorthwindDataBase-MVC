@@ -1,12 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
-namespace NorthwindDataBase_MVC.Models;
+namespace NorthwindDataBase_MVC.Models.Entity;
 
 public partial class Customer
 {
+    [Key]
     public int CustomerId { get; set; }
 
+    [Required]
+    [MaxLength(50)]
     public string? CustomerName { get; set; }
 
     public string? ContactName { get; set; }

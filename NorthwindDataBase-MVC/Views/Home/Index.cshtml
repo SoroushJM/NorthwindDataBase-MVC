@@ -1,13 +1,33 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-
 <div class="text-center">
+    
     <h1><a href="Swagger/index.html">Swagger</a></h1>
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
     <h2 class="display-4">Get All users</h2>
-    <p>Learn about <a href="./GetCustomers">All users</a>.</p>
+    <p>Learn about <a href="./Customers">All users</a>.</p>
     <p>Learn about <a href="./GetCustomers/4">user with id 4</a>.</p>
+        
+    <script>
+        function sendGetRequest(url) {
+            fetch(url)
+                .then(function (response) {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(function (data) {
+                    // Process data here
+                    console.log(data);
+                })
+                .catch(function (error) {
+                    // Handle error, if any
+                    console.error('Error occurred while making the request:', error);
+                });
+        }
+    </script>
 
 </div>

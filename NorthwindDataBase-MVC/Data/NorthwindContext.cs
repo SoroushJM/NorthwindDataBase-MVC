@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
-using NorthwindDataBase_MVC.Models;
+using NorthwindDataBase_MVC.Models.Entity;
 
 namespace NorthwindDataBase_MVC.Data;
 

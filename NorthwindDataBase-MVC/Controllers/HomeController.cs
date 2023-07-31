@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using NorthwindDataBase_MVC.Models;
+using NorthwindDataBase_MVC.Models.Entity;
 using System.Diagnostics;
 
 namespace NorthwindDataBase_MVC.Controllers
