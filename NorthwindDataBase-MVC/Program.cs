@@ -4,19 +4,17 @@ using Microsoft.Extensions.Options;
 using NorthwindDataBase_MVC.Data;
 using NorthwindDataBase_MVC.Models;
 using NorthwindDataBase_MVC.Models.Entity;
+using Microsoft.Data.Sqlite;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(connectionString));
-builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+var connectionString = builder.Configuration.GetConnectionString("main") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-    .AddEntityFrameworkStores<ApplicationDbContext>();
+builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddControllersWithViews();
-builder.Services.AddDbContext<NorthwindContext>(options => options.UseSqlServer(builder.Configuration["DefaultConnection"]));
+builder.Services.AddDbContext<DataContext>(options => options.UseSqlite(builder.Configuration["main"]));
 builder.Services.AddScoped<CustomerRepository>();
 builder.Services.AddScoped<Customer>();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());

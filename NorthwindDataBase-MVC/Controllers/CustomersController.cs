@@ -26,26 +26,26 @@ namespace NorthwindDataBase_MVC.Controllers
         }
 
 
-        [HttpGet("GetCustomerById/{id}")]
-        public IActionResult GetCustomerById(int id, bool returnWithUI = true)
-        {
-            var customer = _customerRepository.GetCustomer(id);
-            if (returnWithUI)
-                return View(customer);
-            else
-            {
-                if (customer == null)
-                {
-                    return NotFound();
-                }
-                return Ok(customer);
-            }
-        }
+        //[HttpGet("GetCustomerById/{id}")]
+        //public IActionResult GetCustomerById(int id, bool returnWithUI = true)
+        //{
+        //    var customer = _customerRepository.GetCustomer(id);
+        //    if (returnWithUI)
+        //        return View(customer);
+        //    else
+        //    {
+        //        if (customer == null)
+        //        {
+        //            return NotFound();
+        //        }
+        //        return Ok(customer);
+        //    }
+        //}
         [HttpPost("CreateCustomer")]
         public ActionResult<customerCreationDto> CreateNewCustomer(customerCreationDto customerdto)
         {
             var customer = _mapper.Map<Models.Entity.Customer>(customerdto);
-            _customerRepository.AddCustomer(customer);
+            //_customerRepository.AddCustomer(customer);
             _customerRepository.SaveChanges();
             return Ok();
         }
