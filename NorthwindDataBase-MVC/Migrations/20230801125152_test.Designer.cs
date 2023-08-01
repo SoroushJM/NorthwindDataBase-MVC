@@ -11,8 +11,8 @@ using NorthwindDataBase_MVC.Data;
 namespace NorthwindDataBase_MVC.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20230801115120_Initial-commit")]
-    partial class Initialcommit
+    [Migration("20230801125152_test")]
+    partial class test
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

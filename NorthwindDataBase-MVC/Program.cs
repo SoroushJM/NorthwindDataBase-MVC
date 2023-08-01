@@ -10,11 +10,11 @@ using Microsoft.Data.Sqlite;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-var connectionString = builder.Configuration.GetConnectionString("main") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddControllersWithViews();
-builder.Services.AddDbContext<DataContext>(options => options.UseSqlite(builder.Configuration["main"]));
+builder.Services.AddDbContext<DataContext>(options => options.UseSqlite(builder.Configuration["DefaultConnection"]));
 builder.Services.AddScoped<CustomerRepository>();
 builder.Services.AddScoped<Customer>();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
