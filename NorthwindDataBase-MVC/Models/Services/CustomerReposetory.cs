@@ -15,6 +15,11 @@ namespace NorthwindDataBase_MVC.Models.Services
             _context = context;
         }
 
+        public void CreateCustomer(Customer customer)
+        {
+            _context.Customers.Add(customer);
+        }
+
         public Customer GetCustomerById(int id)
         {
             return _context.Customers.Where(c => c.CustomerId == id).FirstOrDefault();

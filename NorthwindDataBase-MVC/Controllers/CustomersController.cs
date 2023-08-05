@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
+using NorthwindDataBase_MVC.Models.Entity;
 using NorthwindDataBase_MVC.Models.Services;
 using NuGet.Protocol;
 
@@ -13,7 +14,7 @@ namespace NorthwindDataBase_MVC.Controllers
         public IMapper _mapper;
         public CustomerRepository _customerRepository;
         public CustomersController(CustomerRepository customerRepository,
-         IMapper mapper)
+            IMapper mapper)
         {
             _customerRepository = customerRepository;
             _mapper = mapper;
@@ -34,6 +35,14 @@ namespace NorthwindDataBase_MVC.Controllers
                     return NotFound();
                 }
                 return Ok(customer);
+        }
+        [HttpPost("PostCustomer")]
+        public IActionResult PostCustomer(CreateCustomerDto customerDto)
+        {
+            Customer customer = _mapper.Map<Customer>(customerDto);
+            _customerRepository.CreateCustomer(customer);
+            _customerRepository.SaveChanges();
+            return Ok();
         }
     }
 }
