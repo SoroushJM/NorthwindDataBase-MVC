@@ -4,7 +4,7 @@ using Microsoft.Extensions.Options;
 using NorthwindDataBase_MVC.Data;
 using NorthwindDataBase_MVC.Models.Entity;
 using Microsoft.Data.Sqlite;
-using NorthwindDataBase_MVC.Services;
+using NorthwindDataBase_MVC.Models.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,7 +22,7 @@ builder.Services.AddRazorPages();
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-    .AddEntityFrameworkStores<ApplicationDbContext>();
+    .AddEntityFrameworkStores<DataContext>();
 
 var app = builder.Build();
 

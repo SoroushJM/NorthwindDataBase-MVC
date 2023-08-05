@@ -1,4 +1,4 @@
-﻿namespace NorthwindDataBase_MVC.Models.create
+﻿namespace NorthwindDataBase_MVC.Models.Services
 {
     public class CreateCustomerDto
     {

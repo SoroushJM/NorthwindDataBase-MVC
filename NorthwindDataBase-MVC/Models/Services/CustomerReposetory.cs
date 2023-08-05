@@ -4,7 +4,7 @@ using NorthwindDataBase_MVC.Data;
 using NorthwindDataBase_MVC.Models.Entity;
 using System.Diagnostics;
 
-namespace NorthwindDataBase_MVC.Models
+namespace NorthwindDataBase_MVC.Models.Services
 {
     public class CustomerRepository
     {
@@ -17,12 +17,12 @@ namespace NorthwindDataBase_MVC.Models
 
         public Customer GetCustomerById(int id)
         {
-            return _context.Customer.Where(c => c.CustomerId == id).FirstOrDefault();
+            return _context.Customers.Where(c => c.CustomerId == id).FirstOrDefault();
         }
 
         public bool SaveChanges()
         {
-            return  _context.SaveChanges() >= 0;
+            return _context.SaveChanges() >= 0;
         }
     }
 }

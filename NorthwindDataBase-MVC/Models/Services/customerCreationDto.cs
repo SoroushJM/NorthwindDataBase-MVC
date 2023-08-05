@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 
-namespace NorthwindDataBase_MVC.Services
+namespace NorthwindDataBase_MVC.Models.Services
 {
     public class customerCreationDto
     {

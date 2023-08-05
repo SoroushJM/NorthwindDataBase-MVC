@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using NorthwindDataBase_MVC.Models.Entity;
-using NorthwindDataBase_MVC.Services;
+using NorthwindDataBase_MVC.Models.Services;
 
 namespace NorthwindDataBase_MVC.Models.profile
 {

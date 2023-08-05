@@ -1,8 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
-using NorthwindDataBase_MVC.Models.create;
-using NorthwindDataBase_MVC.Services;
+using NorthwindDataBase_MVC.Models.Services;
 using NuGet.Protocol;
 
 namespace NorthwindDataBase_MVC.Controllers
