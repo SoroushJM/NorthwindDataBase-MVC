@@ -19,6 +19,8 @@ builder.Services.AddScoped<CustomerRepository>();
 builder.Services.AddScoped<Customer>();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddSwaggerGen();
+builder.Services.AddRazorPages();
+builder.Services.AddIdentity();
 
 var app = builder.Build();
 

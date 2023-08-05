@@ -19,5 +19,5 @@ public partial class Employee
 
     public string? Notes { get; set; }
 
-    public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
+    public ICollection<Order> Orders { get; set; } = new List<Order>();
 }

@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace NorthwindDataBase_MVC.Models.Entity;
 
 public partial class OrderDetail
 {
+    [Key]
     public int OrderDetailId { get; set; }
 
     public int? OrderId { get; set; }

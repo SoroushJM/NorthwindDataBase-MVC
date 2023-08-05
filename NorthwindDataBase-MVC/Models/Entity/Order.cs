@@ -9,13 +9,13 @@ public partial class Order
     [Key]
     public int OrderId { get; set; }
 
-    public Customer Customer { get; set; }
+    public Customer Customer { get; set; } = null!;
 
-    public Employee Employee { get; set; }
+    public Employee Employee { get; set; } = null!;
 
     public DateTime? OrderDate { get; set; }
 
-    public Shipper Shipper { get; set; }
+    public Shipper Shipper { get; set; } = null!;
 
     public ICollection<OrderDetail> OrderDetails { get; set; } = new List<OrderDetail>();
 

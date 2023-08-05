@@ -24,5 +24,5 @@ public partial class Customer
     [MaxLength(50)]
     public string? Country { get; set; }
 
-    public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
+    public ICollection<Order> Orders { get; set; } = new List<Order>();
 }
