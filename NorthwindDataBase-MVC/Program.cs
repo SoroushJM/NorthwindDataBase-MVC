@@ -2,10 +2,9 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using NorthwindDataBase_MVC.Data;
-using NorthwindDataBase_MVC.Models;
 using NorthwindDataBase_MVC.Models.Entity;
 using Microsoft.Data.Sqlite;
-
+using NorthwindDataBase_MVC.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,7 +19,10 @@ builder.Services.AddScoped<Customer>();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddSwaggerGen();
 builder.Services.AddRazorPages();
-builder.Services.AddIdentity();
+builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddEntityFrameworkStores<ApplicationDbContext>();
 
 var app = builder.Build();
 
