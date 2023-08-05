@@ -8,7 +8,7 @@ namespace NorthwindDataBase_MVC.Models.profile
     {
         public CustomerProfile()
         {
-            CreateMap<Models.Entity.Customer, customerCreationDto >().ReverseMap();
+
         }
     }
 }

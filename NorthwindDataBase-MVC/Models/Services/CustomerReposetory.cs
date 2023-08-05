@@ -8,9 +8,9 @@ namespace NorthwindDataBase_MVC.Models.Services
 {
     public class CustomerRepository
     {
-        private readonly DataContext _context;
+        private readonly FileContext _context;
 
-        public CustomerRepository(DataContext context)
+        public CustomerRepository(FileContext context)
         {
             _context = context;
         }

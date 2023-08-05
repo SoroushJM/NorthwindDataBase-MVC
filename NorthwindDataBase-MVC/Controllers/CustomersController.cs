@@ -12,7 +12,8 @@ namespace NorthwindDataBase_MVC.Controllers
     {
         public IMapper _mapper;
         public CustomerRepository _customerRepository;
-        public CustomersController(CustomerRepository customerRepository, IMapper mapper)
+        public CustomersController(CustomerRepository customerRepository,
+         IMapper mapper)
         {
             _customerRepository = customerRepository;
             _mapper = mapper;
@@ -25,27 +26,14 @@ namespace NorthwindDataBase_MVC.Controllers
 
 
         [HttpGet("GetCustomerById/{id}")]
-        public IActionResult GetCustomerById(int id, bool returnWithUI = true)
+        public IActionResult GetCustomerById(int id)
         {
             var customer = _customerRepository.GetCustomerById(id);
-            if (returnWithUI)
-                return View(customer);
-            else
-            {
                 if (customer == null)
                 {
                     return NotFound();
                 }
                 return Ok(customer);
-            }
-        }
-        [HttpPost("CreateCustomer")]
-        public ActionResult<customerCreationDto> CreateNewCustomer(customerCreationDto customerdto)
-        {
-            var customer = _mapper.Map<Models.Entity.Customer>(customerdto);
-            //_customerRepository.AddCustomer(customer);
-            _customerRepository.SaveChanges();
-            return Ok();
         }
     }
 }

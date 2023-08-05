@@ -13,7 +13,7 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddControllersWithViews();
-builder.Services.AddDbContext<DataContext>(options => options.UseSqlite(builder.Configuration["DefaultConnection"]));
+builder.Services.AddDbContext<FileContext>(options => options.UseSqlite(builder.Configuration["DefaultConnection"]));
 builder.Services.AddScoped<CustomerRepository>();
 builder.Services.AddScoped<Customer>();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
@@ -22,7 +22,7 @@ builder.Services.AddRazorPages();
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-    .AddEntityFrameworkStores<DataContext>();
+    .AddEntityFrameworkStores<FileContext>();
 
 var app = builder.Build();
 
