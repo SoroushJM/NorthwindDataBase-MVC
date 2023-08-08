@@ -25,31 +25,6 @@ namespace NorthwindDataBase_MVC.Controllers
             _mapper = mapper;
             _mediator = mediator;
         }
-        [HttpGet()]
-        public IActionResult Index()
-        {
-            return View(_customerRepository);
-        }
-
-
-        [HttpGet("salam/{id}")]
-        public IActionResult GetCustomerById(int id)
-        {
-            var customer = _customerRepository.GetCustomerById(id);
-            if (customer == null)
-            {
-                return NotFound();
-            }
-            return Ok(customer);
-        }
-        [HttpPost]
-        public IActionResult PostCustomer(CreateCustomerDto customerDto)
-        {
-            Customer customer = _mapper.Map<Customer>(customerDto);
-            _customerRepository.CreateCustomer(customer);
-            _customerRepository.SaveChanges();
-            return Ok();
-        }
 
         [HttpPut("{id}")]
         public ActionResult UpdateCustomer(int id, CreateCustomerDto customerDto)
@@ -64,17 +39,17 @@ namespace NorthwindDataBase_MVC.Controllers
             return Ok();
         }
 
-        [HttpGet("mediator/{id}")]
+        [HttpGet("{id}")]
         public IActionResult GetCustomerWithMidator(int id)
         {
             return Ok(_mediator.Send(new GetCustomerQuery(id)).Result);
         }
 
-        [HttpPost("mediator")]
+        [HttpPost()]
         public IActionResult PostCustomerWithMidator(CreateCustomerDto createCustomerDto)
         {
-            var command = new NewCustomerCommand(createCustomerDto);
-            _mediator.Send(command);
+
+            _ = _mediator.Send(new NewCustomerCommand(createCustomerDto));
             return Ok();
         }
     }
