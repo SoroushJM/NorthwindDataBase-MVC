@@ -1,9 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace NorthwindDataBase_MVC.Models
+namespace NorthwindDataBase_MVC.Models.DTOS
 {
-    public class CreateCustomerDto
+    public class ReturnCustomerDTO
     {
+        [Key]
+        public int CustomerId { get; set; }
 
         [Required]
         [MaxLength(50)]

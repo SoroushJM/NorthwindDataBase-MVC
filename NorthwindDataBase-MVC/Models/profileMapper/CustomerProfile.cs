@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using NorthwindDataBase_MVC.Models.DTOS;
 using NorthwindDataBase_MVC.Models.Entity;
 
 namespace NorthwindDataBase_MVC.Models.profileMapper
@@ -7,7 +8,8 @@ namespace NorthwindDataBase_MVC.Models.profileMapper
     {
         public CustomerProfile()
         {
-            CreateMap<CreateCustomerDto, Customer>();
+            CreateMap<NewCustomerDTO, Customer>().ReverseMap();
+            CreateMap<ReturnCustomerDTO, Customer>().ReverseMap();
         }
     }
 }
