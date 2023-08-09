@@ -4,9 +4,6 @@ namespace NorthwindDataBase_MVC.Models.DTOS
 {
     public class ReturnCustomerDTO
     {
-        [Key]
-        public int CustomerId { get; set; }
-
         [Required]
         [MaxLength(50)]
         public string? FirstName { get; set; }
