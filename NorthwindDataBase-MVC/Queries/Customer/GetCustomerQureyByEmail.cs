@@ -13,9 +13,9 @@ namespace NorthwindDataBase_MVC.Queries.Customer
         public CustomerRepository _customerRepository { get; set; }
         public GetCustomerQureyByEmail(string email ,IMapper mapper =null! ,CustomerRepository customerRepository = null!)
         {
-            _mapper = mapper ?? throw new NullReferenceException();
-            _email = email ?? throw new NullReferenceException();
-            _customerRepository = customerRepository ?? throw new NullReferenceException();
+            _mapper = mapper;
+            _email = email;
+            _customerRepository = customerRepository;
         }
     }
 

@@ -1,35 +1,39 @@
 ﻿using MediatR;
-using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Mvc;
 using NorthwindDataBase_MVC.Models.DTOS;
 using NorthwindDataBase_MVC.Models.Entity;
 using NorthwindDataBase_MVC.Models.Repository;
 
 namespace NorthwindDataBase_MVC.Commands
 {
-    public record NewCustomerCommand(NewCustomerDTO NewCustomerDTO) : IRequest<RequestsResult>;
-
-
-    public class NewCustomerCommandHandler : IRequestHandler<NewCustomerCommand, RequestsResult>
+    public class NewCustomerCommand : IRequest<(ReturnCustomerDTO,CreateCustomerStats)>
     {
         public CustomerRepository _customerRepository;
-        public NewCustomerCommandHandler(CustomerRepository customerRepository)
+        public NewCustomerDTO _newCustomerDTO;
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="newCustomerDTO">pass the new Customer object that you get from controller</param>
+        /// <param name="customerRepository">dependency injection will give this item do not pass this object</param>
+        /// <exception cref="NullReferenceException"></exception>
+        public NewCustomerCommand(NewCustomerDTO newCustomerDTO ,CustomerRepository customerRepository =null!)
         {
-            _customerRepository = customerRepository;
+            _newCustomerDTO = newCustomerDTO ?? throw new NullReferenceException();
+            _customerRepository = customerRepository ?? throw new NullReferenceException();
         }
+    }
+    public class NewCustomerCommandHandler : IRequestHandler<NewCustomerCommand, (ReturnCustomerDTO, CreateCustomerStats)>
+    {
 
-        public async Task<RequestsResult> Handle(NewCustomerCommand request, CancellationToken cancellationToken)
+        async Task<(ReturnCustomerDTO, CreateCustomerStats)> IRequestHandler<NewCustomerCommand, (ReturnCustomerDTO, CreateCustomerStats)>.Handle(NewCustomerCommand request, CancellationToken cancellationToken)
         {
-            if(await _customerRepository.EmailExist(request.NewCustomerDTO.Email))
+            bool isExist = await request._customerRepository.EmailExist(request._newCustomerDTO.Email);
+            if (isExist)
             {
-                RequestsResult requstsResult = new(RequestsResult.RequestStatsEnum.EmailExist, null);
-                return requstsResult;
+                CreateCustomerStats createCustomerStats= new CreateCustomerStats();
+                createCustomerStats.EmailExists = true;
+                return Task.FromResult((request., createCustomerStats));
             }
-            await _customerRepository.CreateNewCustomer(request.NewCustomerDTO);
-            await _customerRepository.SaveChanges();
-            ReturnCustomerDTO newcustomer = await _customerRepository.FindCustomerByEmail(request.NewCustomerDTO.Email);
-            return new RequestsResult(RequestsResult.RequestStatsEnum.succeed, newcustomer);
-
+            throw new NotImplementedException();
         }
     }
 }

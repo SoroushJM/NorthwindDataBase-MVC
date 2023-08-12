@@ -3,13 +3,17 @@ using System.ComponentModel.DataAnnotations;
 
 namespace NorthwindDataBase_MVC.Models.DTOS
 {
-    public class NewCustomerDTO : BaseDTO
+    public class NewCustomerDTO
     {
-
+        [EmailAddress]
+        [Required(ErrorMessage = "Email required")]
         public string Email { get; set; } = null!;
 
-        public string Password { get; set; } =null!;
+        [PasswordPropertyText]
+        [Required(ErrorMessage = "password is required")]
+        public string Password { get; set; } = string.Empty!;
 
+        [Required]
         [MaxLength(50)]
         public string? FirstName { get; set; }
 

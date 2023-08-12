@@ -14,8 +14,8 @@ public class GetCustomerQueryByIdHandler : IRequestHandler<GetCustomerQueryById,
     private readonly IMapper _mapper;
     public GetCustomerQueryByIdHandler(FileContext context, IMapper mapper)
     {
-        _context = context ?? throw new NullReferenceException();
-        _mapper = mapper ?? throw new NullReferenceException();
+        _context = context;
+        _mapper = mapper;
     }
 
     public async Task<ReturnCustomerDTO> Handle(GetCustomerQueryById request, CancellationToken cancellationToken)

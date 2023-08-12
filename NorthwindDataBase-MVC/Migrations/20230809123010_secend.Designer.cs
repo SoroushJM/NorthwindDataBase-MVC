@@ -12,9 +12,7 @@ namespace NorthwindDataBase_MVC.Migrations
 {
     [DbContext(typeof(FileContext))]
     [Migration("20230809123010_secend")]
-#pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
     partial class secend
-#pragma warning restore CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
