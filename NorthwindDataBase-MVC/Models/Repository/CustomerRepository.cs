@@ -25,5 +25,16 @@ namespace NorthwindDataBase_MVC.Models.Repository
             ReturnCustomerDTO returnCustomerDTO = _mapper.Map<ReturnCustomerDTO>(customer);
             return returnCustomerDTO;
         }
+        public async Task<ReturnCustomerDTO> CreateNewCustomer(NewCustomerDTO newCustomerDTO)
+        {
+            Customer customerEntity = _mapper.Map<NewCustomerDTO, Customer>(newCustomerDTO);
+            await _context.AddAsync(customerEntity);
+            var returnCustomerDTO = await FindCustomerByEmail(newCustomerDTO.Email);
+            return returnCustomerDTO;
+        }
+        public async Task SaveChanges()
+        {
+            await _context.SaveChangesAsync();
+        }
     }
 }

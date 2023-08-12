@@ -6,6 +6,7 @@ using NorthwindDataBase_MVC.Models.DTOS;
 using NorthwindDataBase_MVC.Models.Entity;
 using NorthwindDataBase_MVC.Models.Services;
 using NorthwindDataBase_MVC.Queries.Customer;
+using NuGet.Protocol;
 
 namespace NorthwindDataBase_MVC.Controllers
 {
@@ -13,16 +14,10 @@ namespace NorthwindDataBase_MVC.Controllers
     [Route("Api/[Controller]")]
     public class CustomersController : Controller
     {
-        public IMapper _mapper;
-        public CustomerRepository _customerRepository;
         public IMediator _mediator;
 
-        public CustomersController(CustomerRepository customerRepository,
-            IMapper mapper,
-            IMediator mediator)
+        public CustomersController(IMediator mediator)
         {
-            _customerRepository = customerRepository;
-            _mapper = mapper;
             _mediator = mediator;
         }
         [HttpGet("{id}")]
@@ -31,13 +26,5 @@ namespace NorthwindDataBase_MVC.Controllers
             return Ok(await _mediator.Send(new GetCustomerQueryById(id)));
         }
 
-        [HttpPost()]
-        public async Task<IActionResult> PostCustomer(NewCustomerDTO createCustomerDto)
-        {
-            //var command = new NewCustomerCommand(createCustomerDto);
-            //await _mediator.Send(command);
-            //return Ok();
-            throw new NotImplementedException();
-        }
     }
 }
